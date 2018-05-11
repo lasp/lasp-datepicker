@@ -1,0 +1,25 @@
+<div class="lasp-datepicker year">
+    <div class="datepicker">
+        <div class="date-input-ctnr">
+            <label class="dr-label">Start Year</label>
+            <br>
+            <input class="date-input"
+             ng-style="model.startDateStyle"
+             ng-model="model.inputDate.start"
+             ng-change="inputDateChanged()"
+             type="number">
+            
+        </div>
+        <div class="date-input-ctnr">
+            <label class="dr-label">End Year</label>
+            <br>
+            <input class="date-input"
+             ng-style="model.endDateStyle"
+             ng-model="model.inputDate.end"
+             ng-change="inputDateChanged()"
+             type="number">
+        </div>
+    </div>    
+    <div class="validation-error text-danger">{{ model.validationError }}</div>
+</div>
+<div class="lasp-datepicker clear" style="margin-bottom:1em;"></div>

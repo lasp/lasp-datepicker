@@ -1,0 +1,358 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>lasp-datepicker Test Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../dist/lasp-datepicker.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/default.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../dist/lasp-datepicker.js"></script>
+    <script src="index.js"></script>
+
+    <style>
+        .squisher {
+            width: 280px; /* smallest width needed for plot pages in lisird3 */
+            background-color: #F8F8F8;
+            border: 1px dotted #CCC;
+        }
+        h1 {
+            font-family: "Courier New", Courier, monospace;
+            font-weight: bold;
+        }
+        #main-content {
+            width: 60%;
+            margin: 25px auto;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px;
+            padding: 25px;
+        }
+        .content-area {
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 0px 0px 5px 5px;
+        }
+        pre {
+            border: none;
+            background: none;
+            margin: 0 0 -35px 0;
+            padding: 0;
+        }
+        .datepicker-tabset {
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body ng-app="datePickerDemoApp">
+    <div id="main-content">
+        <!-- Duration Datepicker -->
+        <uib-tabset class="datepicker-tabset">
+            <uib-tab index="0" heading="Demo">
+                <div class="content-area">
+                    <!-- instantiate datepicker-duration directive -->
+                    <div id="test-duration" ng-controller="durationCtrl">
+                        <h1>&lt;datepicker-duration&gt;</h1>
+                        <datepicker-duration label="Duration" relative-to="End date" relative-symbol="+" on-number-change="onNumberChange" on-multiplier-change="onMultiplierChange" model="model"></datepicker-duration>
+                    </div>
+                </div>
+            </uib-tab>
+            <uib-tab index="$index + 1" heading="HTML">
+                <div class="content-area">
+                    <!-- HTML markup -->
+                    <pre>
+<code class="html">&lt;datepicker-duration 
+    label="Duration" 
+    relative-to="End date" 
+    relative-symbol="+"
+    on-number-change="onNumberChange"
+    on-multiplier-change="onMultiplierChange"
+    model="model"&gt;
+&lt;/datepicker-duration&gt;</code>
+                    </pre>
+                </div>
+            </uib-tab>
+            <uib-tab index="$index + 1" heading="JavaScript">
+                <div class="content-area">
+                    <!-- JS code from controller -->
+                    <pre>
+<code class="javascript">$scope.onNumberChange = function() {
+    setTimeout(function() {
+        console.log($scope.model);
+    }, 1);
+    
+};
+$scope.onMultiplierChange = function() {
+    setTimeout(function() {
+        console.log($scope.model);
+    }, 1);
+};
+
+$scope.model = {
+    duration: 1,
+    durationMultiplier: '1000'
+};</code>
+                    </pre>
+                </div>
+            </uib-tab>
+        </uib-tabset>
+        
+        <!-- Offset Datepicker -->
+        <uib-tabset class="datepicker-tabset">
+            <uib-tab index="0" heading="Demo">
+                <div class="content-area">
+                    <!-- instantiate datepicker-duration directive -->
+                    <div id="test-offset" ng-controller="offsetCtrl">
+                        <h1>&lt;datepicker-offset&gt;</h1>
+                        <p>Picking an offset relative to {{now}}.</p>
+                        <datepicker-offset model="model" config="datePickerConfig"></datepicker-duration>
+                    </div>
+                </div>
+            </uib-tab>
+            <uib-tab index="$index + 1" heading="HTML">
+                <div class="content-area">
+                    <!-- HTML markup -->
+                    <pre>
+<code class="html">&lt;datepicker-offset 
+    model="model"
+    config="datePickerConfig"&gt;
+&lt;/datepicker-offset&gt;</code>
+                    </pre>
+                </div>
+            </uib-tab>
+            <uib-tab index="$index + 1" heading="JavaScript">
+                <div class="content-area">
+                    <!-- JS code from controller -->
+                    <pre>
+<code class="javascript">$scope.model = {
+    scalar: 30,
+    period: 'm'
+};
+
+$scope.datePickerConfig = {
+    timeFormat: 'YYYY-MM-DD',
+    timezone: 'utc',
+    zeroOffsetDate: new Date()
+};</code>
+                    </pre>
+                </div>
+            </uib-tab>
+        </uib-tabset>
+        
+        
+        <!-- Year Datepicker -->
+        <uib-tabset class="datepicker-tabset">
+            <uib-tab index="0" heading="Demo">
+                <div class="content-area">
+                    <!-- instantiate datepicker-year directive -->
+                    <div id='test-year' ng-controller='yearCtrl'>
+                        <h1>&lt;datepicker-year&gt;</h1>
+                        <datepicker-year date="date" config="datePickerConfig"></datepicker-year>
+                    </div>
+                </div>
+            </uib-tab>
+            <uib-tab index="$index + 1" heading="HTML">
+                <div class="content-area">
+                    <!-- HTML markup -->
+                    <pre>
+<code class="html">&lt;datepicker-year 
+    date="date" 
+    config="datePickerConfig"&gt;
+&lt;/datepicker-year&gt;</code>
+                    </pre>
+                </div>
+            </uib-tab>
+            <uib-tab index="$index + 1" heading="JavaScript">
+                <div class="content-area">
+                    <!-- JS code from controller -->
+                    <pre>
+<code class="javascript">var endDate = today();
+var startDate = new Date(
+    endDate.getFullYear()-1,
+    endDate.getMonth(),
+    endDate.getDate()
+);
+
+$scope.date = {
+    start: startDate,
+    end: endDate
+};
+
+$scope.datePickerConfig = {
+    type: "year"
+};</code>
+                    </pre>
+                </div>
+            </uib-tab>
+        </uib-tabset>
+        
+        <!-- Date Datepicker -->
+        <uib-tabset class="datepicker-tabset">
+            <uib-tab index="0" heading="Demo">
+                <div class="content-area">
+                    <!-- instantiate datepicker-date directive -->
+                    <div id='test-date' ng-controller='dateCtrl'>
+                        <h1>&lt;datepicker-date&gt;</h1>
+                        <datepicker-date date="date" config="datePickerConfig" on-popup-open="onPopupOpen(which);" on-popup-close="onPopupClose(which);" on-error="onError(error)"></datepicker-date>
+                    </div>
+                </div>
+            </uib-tab>
+            <uib-tab index="$index + 1" heading="HTML">
+                <div class="content-area">
+                    <!-- HTML markup -->
+                    <pre>
+<code class="html">&lt;datepicker-date 
+    date="date" 
+    config="datePickerConfig" 
+    on-popup-open="onPopupOpen(which);" 
+    on-popup-close="onPopupClose(which);"&gt;
+&lt;/datepicker-date&gt;</code>
+                    </pre>
+                </div>
+            </uib-tab>
+            <uib-tab index="$index + 1" heading="JavaScript">
+                <div class="content-area">
+                    <!-- JS code from controller -->
+                    <pre>
+<code class="javascript">$scope.date = {
+    start: yesterday(),
+    end: today()
+};
+
+$scope.datePickerConfig = {
+    type: "date",
+    timeFormat: "YYYY-MM-DD",
+    timezone: 'local'
+};
+
+$scope.onPopupOpen = function( which ) {
+    console.log('Opened ' + which);
+};
+
+$scope.onPopupClose = function( which ) {
+    console.log('Closed ' + which);
+};</code>
+                    </pre>
+                </div>
+            </uib-tab>
+        </uib-tabset>
+        
+        <!-- Date Datepicker Squished-->
+        <uib-tabset class="datepicker-tabset">
+            <uib-tab index="0" heading="Demo">
+                <div class="content-area">
+                    <!-- instantiate squished datepicker-date directive -->
+                    <div id='test-date-squished' ng-controller='dateCtrl'>
+                        <h1>&lt;div.squished&gt;&lt;datepicker-date&gt;&lt;/div&gt;</h1>
+                        <div class="squisher">
+                            <datepicker-date date="date" config="datePickerConfig"></datepicker-date>
+                        </div>
+                    </div>
+                </div>
+            </uib-tab>
+            <uib-tab index="$index + 1" heading="HTML">
+                <div class="content-area">
+                    <!-- HTML markup -->
+                    <pre>
+<code class="html">&lt;div class="squisher"&gt;
+    &lt;datepicker-date 
+        date="date" 
+        config="datePickerConfig" 
+        on-popup-open="onPopupOpen(which);" 
+        on-popup-close="onPopupClose(which)";&gt;
+    &lt;/datepicker-date&gt;
+&lt;/div&gt;</code>
+                    </pre>
+                </div>
+            </uib-tab>
+            <uib-tab index="$index + 1" heading="JavaScript">
+                <div class="content-area">
+                    <!-- JS code from controller -->
+                    <pre>
+<code class="javascript">$scope.date = {
+    start: yesterday(),
+    end: today()
+};
+
+$scope.datePickerConfig = {
+    type: "date",
+    timeFormat: "YYYY-MM-DD",
+    timezone: 'local'
+};
+
+$scope.onPopupOpen = function( which ) {
+    console.log('Opened ' + which);
+};
+
+$scope.onPopupClose = function( which ) {
+    console.log('Closed ' + which);
+};</code>
+                    </pre>
+                </div>
+            </uib-tab>
+            <uib-tab index="$index + 1" heading="CSS">
+                <div class="content-area">
+                    <!-- JS code from controller -->
+                    <pre>
+<code class="css">.squisher {
+    width: 280px; /* smallest width needed for plot pages in lisird3 */
+    background-color: #F8F8F8;
+    border: 1px dotted #CCC;
+}</code>
+                    </pre>
+                </div>
+            </uib-tab>
+        </uib-tabset>
+        
+        <!-- Minimal Datepicker -->
+        <uib-tabset class="datepicker-tabset">
+            <uib-tab index="0" heading="Demo">
+                <div class="content-area">
+                    <!-- instantiate datepicker-minimal directive -->
+                    <div id="test_minimal" ng-controller="datetimeMinimalCtrl">
+                        <h1>&lt;datepicker-minimal&gt; (default)</h1>
+                        <datepicker-minimal date="date" config="datePickerConfig"></datepicker-minimal>
+                    </div>
+                </div>
+            </uib-tab>
+            <uib-tab index="$index + 1" heading="HTML">
+                <div class="content-area">
+                    <!-- HTML markup -->
+                    <pre>
+<code class="html">&lt;datepicker-minimal
+    date="date"
+    config="datePickerConfig"&gt;
+&lt;/datepicker-minimal&gt;</code>
+                    </pre>
+                </div>
+            </uib-tab>
+            <uib-tab index="$index + 1" heading="JavaScript">
+                <div class="content-area">
+                    <!-- JS code from controller -->
+                    <pre>
+<code class="javascript">$scope.date = {
+    start: yesterday(),
+    end: today()
+};
+
+$scope.datePickerConfig = {
+    type: "datetime_minimal",
+    timeFormat: "YYYY-DDDD"
+};</code>
+                    </pre>
+                </div>
+            </uib-tab>
+        </uib-tabset>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!-- Minimal Datepicker -->
+<div class="lasp-datepicker datetime_minimal">
+    <div class="timezone-select">
+        <label class="dr-label">
+            <input ng-model="config.timezone" ng-change="changeTimeZone()" type="radio" value="local">
+            Local
+        </label>
+        <label class="dr-label">
+            <input ng-model="config.timezone" ng-change="changeTimeZone()" value="utc" type="radio">
+            UTC
+        </label>
+    </div>
+    <div class="input-ctnr floatctnr">
+
+        <date-input
+            x-title="Start Date"
+            x-style="model.startDateStyle"
+            x-on-focus="openAdvancedStart()"
+            x-on-change="tabStartDateChanged(newValue)"
+            model="model.tabDate.start"
+        ></date-input>
+
+        <date-input
+            x-title="End Date"
+            x-style="model.endDateStyle"
+            x-on-focus="openAdvancedEnd()"
+            x-on-change="tabEndDateChanged(newValue)"
+            model="model.tabDate.end"
+        ></date-input>
+
+        <div class="right time-format-select">
+            <label class="dr-label">Date Format</label>
+            <br>
+            <select ng-model="config.timeFormat" ng-change="updateTimeFormat()" class="form-control">
+                <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                <option value="YYYY-DDDD">YYYY-DDD</option>
+            </select>
+        </div>
+    </div>
+    
+    <!-- Advanced settings -->
+    <div tabindex="-1" class="advancedSettingsContainer advancedSettingsBefore" ng-class="{'advancedSettingsAfter' : model.showAdvancedStart || model.showAdvancedEnd}">
+        <!-- Advanced start time settings -->
+        <div class="arrow-up" style="margin-left:8%;" ng-show="model.showAdvancedStart"></div>
+        <div class="date-tab datepicker advancedSettings" ng-show="model.showAdvancedStart">
+            <!-- Update absolute start time -->
+            <div class="advanced-settings-module">
+                <label class="dr-label">Absolute Start Time</label>
+                <br>
+                <!-- The disabled, hidden input box -->
+                <input class="form-control date-box disabled"
+                 uib-datepicker-popup="yyyy-MM-dd"
+                 is-open="model.dateOpenedStart"
+                 ng-style="model.startDateStyle"
+                 ng-model="date.start"
+                 ng-change="mainDateChanged()"
+                 close-text="Cancel"
+                 style="float:left;"
+                 type="text">
+                <!-- Input box in view -->
+                <input class="form-control date-box"
+                 is-open="model.dateOpenedStart"
+                 ng-style="model.startDateStyle"
+                 ng-model="model.inputDate.start"
+                 ng-change="inputDateChanged()"
+                 style="width:40%;float:left;border-top-right-radius:0;border-bottom-right-radius:0;"
+                 type="text">
+                 <!-- Calendar button icon -->
+                 <span class="calendar-icon">
+                    <button class="btn btn-default" ng-click="toggleStartPicker($event)" type="button">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+                <uib-timepicker class="timepicker" ng-model="model.timepicker.start" show-meridian="false" ng-change="timepickerDateChanged()"></uib-timepicker>
+            </div>
+            <!-- Update start relative to end time -->
+            <div class="or">
+            OR
+            </div>
+            <div class="advanced-settings-module border-left">
+                <datepicker-duration label="Start Time Relative to End" relative-to="End Time" relative-symbol="-" on-number-change="updateTimeStart" on-multiplier-change="getDuration" model="model" style="model.durationStyle"></datepicker-duration>
+            </div>
+        </div>
+        <!-- Advanced end time settings -->
+        <div class="arrow-up" style="margin-left:45%;" ng-show="model.showAdvancedEnd"></div>
+        <div class="date-tab datepicker advancedSettings" ng-show="model.showAdvancedEnd">
+            <!-- Update absolute start time -->
+            <div class="advanced-settings-module">
+                <label class="dr-label">Absolute End Time</label>
+                <br>
+                <!-- The disabled, hidden input box -->
+                <input class="form-control date-box disabled"
+                 uib-datepicker-popup="yyyy-MM-dd"
+                 is-open="model.dateOpenedEnd"
+                 ng-style="model.endDateStyle"
+                 ng-model="date.end"
+                 ng-change="mainDateChanged()"
+                 close-text="Cancel"
+                 style="float:left;"
+                 type="text">
+                <!-- Input box in view -->
+                <input class="form-control date-box"
+                 is-open="model.dateOpenedEnd"
+                 ng-style="model.endDateStyle"
+                 ng-model="model.inputDate.end"
+                 ng-change="inputDateChanged()"
+                 style="width:40%;float:left;border-top-right-radius:0;border-bottom-right-radius:0;"
+                 type="text">
+                 <!-- Calendar button icon -->
+                 <span class="calendar-icon">
+                    <button class="btn btn-default" ng-click="toggleEndPicker($event)" type="button">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+                <uib-timepicker class="timepicker" ng-model="model.timepicker.end" show-meridian="false" ng-change="timepickerDateChanged()"></uib-timepicker>
+            </div>
+            <!-- Update end relative to start time -->
+            <div class="or">
+            OR
+            </div>
+            <div class="advanced-settings-module border-left">
+                <datepicker-duration label="End Time Relative to Start" relative-to="Start Time" relative-symbol="+" on-number-change="updateTimeEnd" on-multiplier-change="getDuration" model="model" style="model.durationStyle"></datepicker-duration>
+            </div>
+        </div>
+    </div> <!-- End Advanced Settings -->
+    <div class="validation-error text-danger">{{ model.validationError }}</div>
+</div>
+<div class="lasp-datepicker clear" style="margin-bottom:1em;"></div>

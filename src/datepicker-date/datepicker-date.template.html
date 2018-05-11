@@ -1,0 +1,60 @@
+<div class="lasp-datepicker date">
+    <div class="datepicker">
+        <div class="date-input-ctnr">
+            <label class="dr-label">Start Date</label>
+            <br>
+            <input class="form-control date-box disabled"
+             uib-datepicker-popup="yyyy-MM-dd"
+             is-open="model.dateOpenedStart"
+             ng-model="calculated.jsDateMidnightLocal.start"
+             ng-change="onCalculatedJsDateMidnightLocalStartChanged()"
+             close-text="Cancel"
+             style="float:left;"
+             type="text">
+            
+            <div class="date-input-row">
+                <input class="date-input form-control date-box"
+                 ng-style="model.startDateStyle"
+                 ng-model="calculated.str.start"
+                 ng-change="onCalculatedStrChanged()"
+                 type="text">
+                <span class="input-group-btn calendar-icon">
+                    <button class="btn btn-default" ng-click="toggleStartPicker($event)" type="button">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+            </div>
+            
+        </div>
+        <div class="date-input-ctnr">
+            <label class="dr-label">End Date</label>
+            <br>
+            <input class="form-control date-box disabled"
+             uib-datepicker-popup="yyyy-MM-dd"
+             is-open="model.dateOpenedEnd"
+             ng-style="model.endDateStyle"
+             ng-model="calculated.jsDateMidnightLocal.end"
+             ng-change="onCalculatedJsDateMidnightLocalEndChanged()"
+             close-text="Cancel"
+             style="float:left;"
+             type="text">
+            
+
+            <div class="date-input-row">
+                <input class="date-input form-control date-box"
+                 is-open="model.dateOpenedEnd"
+                 ng-style="model.endDateStyle"
+                 ng-model="calculated.str.end"
+                 ng-change="onCalculatedStrChanged()"
+                 type="text">
+                <span class="input-group-btn calendar-icon">
+                    <button class="btn btn-default" ng-click="toggleEndPicker($event)" type="button">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>    
+    <div class="validation-error text-danger">{{ model.validationError }}</div>
+</div>
+<div class="lasp-datepicker clear" style="margin-bottom:1em;"></div>

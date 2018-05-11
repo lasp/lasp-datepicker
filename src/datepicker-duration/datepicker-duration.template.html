@@ -1,0 +1,28 @@
+<!-- Duration picker -->
+<div class="lasp-datepicker duration">
+    <span ng-if="label !== undefined">
+        <label class="dr-label">{{label}}</label>
+        <br>
+    </span>
+    <div style="float:left;font-size:15px;line-height:34px;margin-left:5px;" ng-if="relativeTo !== undefined">
+        {{relativeTo}} &nbsp;&nbsp;{{relativeSymbol}}&nbsp;&nbsp;
+    </div>
+    <div class="duration-picker input-append">
+        <input min="0"
+         step="any"
+         style="width:5em;"
+         ng-style="style"
+         ng-model="model.duration"
+         ng-change="onNumberChange()"
+         type="number">
+        <span class="add-on">
+            <select ng-model="model.durationMultiplier" ng-change="onMultiplierChange()">
+                <!-- Values listed here are in milliseconds -->
+                <option value="86400000">Days</option>
+                <option value="3600000">Hours</option>
+                <option value="60000">Min.</option>
+                <option value="1000">Sec.</option>
+            </select>
+        </span>
+    </div>
+</div>

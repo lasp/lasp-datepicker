@@ -1,0 +1,28 @@
+<!-- Offset Datepicker -->
+<div class="lasp-datepicker offset clearfix">
+    <div class="offset-absolute">
+        <label>Absolute start time</label>
+        <input class="form-control" ng-model="vm.absolute" ng-change="updateRelativeFromAbsolute()" ng-style="inputStyle">
+    </div>
+    <div class="offset-or">OR</div>
+    <div class="offset-duration">
+        <label>Relative start time</label>
+        <div class="duration-picker input-append">
+            <input step="any" type="number" ng-model="vm.scalar" ng-change="updateAbsoluteFromRelative()">
+            <span class="add-on">
+                <select ng-model="vm.period" ng-change="updateAbsoluteFromRelative()">
+                    <option value="y">Years</option>
+                    <option value="d">Days</option>
+                    <option value="h">Hours</option>
+                    <option value="m">Min.</option>
+                    <option value="s">Sec.</option>
+                </select>
+            </span>
+        </div>
+    </div>
+</div>
+<p class="small">Using
+    <span ng-if="config.timezone === 'utc'">UTC</span>
+    <span ng-if="config.timezone === 'local'">local timezone</span>
+</p>
+<p class="validation-error text-danger">{{ baseScope.model.validationError }}</p>
