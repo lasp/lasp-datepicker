@@ -1,13 +1,5 @@
 # LASP Datepicker
 
-### Contacts
-
-* **Experienced Devs:**
-    * Brian Putnam
-    * Irfan Nadiadi
-    * Tyler Traver
-    * Ransom Christofferson
-
 ### General LASP Project Information
 
 The LASP Datepicker does not have a product owner, but is managed by the LASP Web Application Development
@@ -83,9 +75,7 @@ In the same directory, we also maintain the services which the datepicker direct
 
 ### Build System
 
-We use a standard Gulp and Node build system for this project:
-	[Gulp](https://gulpjs.com/)
-	[Node](https://nodejs.org/en/)
+We use a standard [Gulp](https://gulpjs.com/) and [Node](https://nodejs.org/en/) build system for this project.
 
 
 ##### Task Cheatsheet
