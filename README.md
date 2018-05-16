@@ -29,8 +29,7 @@ with features to set an absolute datetime for the start or end field, or set by 
 
 ### Production URLs
 
-This project does not have its own production URL as it is a plugin for other web applications,
-namely WebTCAD and LISIRD.
+This project does not have its own production URL as it is a plugin for other web applications.
 
 ### Architecture
 
