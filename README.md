@@ -159,6 +159,8 @@ $scope.datePickerConfig = {
 
 ##### LASP Datepicker-specific common issues & gotchas
 
+For questions, please contact the LASP Web Application Development Team <web.support@lasp.colorado.edu>
+
 ###### Changes made outside Gulp
 If `gulp serve` was run to test changes to the project, then the `dist/` folder will automatically be
 updated with the newly built files. If not, then `gulp build` needs to be run manually before changes are

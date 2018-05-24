@@ -1,9 +1,7 @@
 {
   "name": "lasp-datepicker",
   "version": "1.2.1",
-  "authors": [
-    "LASP Web Application Development Team"
-  ],
+  "author": "LASP Web Application Development Team <web.support@lasp.colorado.edu>",
   "description": "AngularJS directive for picking a date/time range",
   "main": [
     "./dist/lasp-datepicker.js",

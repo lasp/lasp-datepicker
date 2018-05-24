@@ -3,29 +3,7 @@
   "version": "1.2.1",
   "description": "An Angular.JS directive that provides an elegant form to select a date and time range",
   "license": "UNLICENSED",
-  "author": "LASP Web Application Development Team",
-  "contributors": [
-    {
-      "name": "Irfan Nadiadi",
-      "email": "irfan.nadiadi@lasp.colorado.edu"
-    },
-    {
-      "name": "Tyler Traver",
-      "email": "tyler.traver@lasp.colorado.edu"
-    },
-    {
-      "name": "Michael Cox",
-      "email": "michael.cox@lasp.colorado.edu"
-    },
-    {
-      "name": "Brian Putnam",
-      "email": "brian.putnam@lasp.colorado.edu"
-    },
-    {
-      "name": "Ransom Christofferson",
-      "email": "ransom.christofferson@lasp.colorado.edu"
-    }
-  ],
+  "author": "LASP Web Application Development Team <web.support@lasp.colorado.edu>",
   "repository": {
     "type": "git",
     "url": "https://github.com/lasp/lasp-datepicker.git"
